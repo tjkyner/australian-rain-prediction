@@ -1,3 +1,6 @@
+# Specific files
+saved_models/rf_gs.joblib
+
 # Google Slides
 *.gslides
 
