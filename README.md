@@ -14,12 +14,13 @@ Weather, and humankind's ability to accurately predict it, plays a critical role
 
 ### Repository Structure
 ```
-├── images/          # Contains exported images of plots used in the presentation
-├── submissions/     # Contains files used for the project submissions
+├── images/          # Exported images of plots
+├── saved_models/    # Saved hyperparameter-tuned models for quick access
+├── submissions/     # Files used for the project submissions
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── notebook.ipynb   # Jupyter notebook containing the analysis and model 
+├── notebook.ipynb   # Jupyter notebook containing the analysis and models 
 └── weatherAUS.csv   # Data on weather conditions in Australia
 ```
 
@@ -53,7 +54,18 @@ According to the author of the Kaggle dataset and the ["Notes to accompany Daily
 | `RainToday` | Did the current day receive precipitation exceeding 1mm in the 24 hours to 9am | Binary (0 = No, 1 = Yes) |
 | `RainTomorrow` | Did the next day receive precipitation exceeding 1mm in the 24 hours to 9am | Binary (0 = No, 1 = Yes) |
 
-### Interesting Observations
+### Observations
+#### Histograms
+![Histograms of data columns](images/histograms.png)
+
+#### Rainy Days by Location
+![Rainy days by location](images/rainy_days_by_loc.png)
+
+#### Seasonality
+![Seasonality of rain](images/seasonality.png)
+
+#### Correlation Matrix
+![Correlation matrix](images/corr_heatmap.png)
 
 ## Data Preprocessing
 ### Missing Values
@@ -76,8 +88,33 @@ After engineering the `Month` feature, the following categorical features were t
 - `WindDir3pm`
 
 ## Modeling
+Four types of models were explored and had their hyperparameters tuned:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- XGBoost
+
+Ultimately, the XGBoost model had the best performance.
+
+![Model accuracies comparison](images/model_accuracies.png)
+
+![Model ROC curves](images/model_roc_curves.png)
+
+![Feature importances](images/feat_importances.png)
 
 ## Conclusion
-### Results
+## Results
+The best performing model is the hyperparameter-tuned XGBoost model with an accuracy of approximately 86%. The scores for both the training and testing data were similar, reducing concerns of the model being overfit. In terms of feature importances, `Humidity3pm` is the single most important feature. However, when grouping the features back into their original categories, the following groups have the most importance:
+- `Location`
+- `WindDir3pm`
+- `WindDir9am`
+- `WindGustDir`
+- `Month`
+- `Humidity3pm`
 
-### Next Steps
+## Next Steps
+While this model is a good starting point for rain prediction in Australia, there are several ways in which the model could be improved upon:
+- Further hyperparameter tuning
+- Engineering new features such as trailing amounts of rain or sunshine
+- Collecting additional data from nearby countries (for example, does rain originating in Indonesia or New Zealand have predictive power?)
+- Attempting to predict the *amount* of rainfall
