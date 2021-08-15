@@ -1,10 +1,5 @@
 # Rain in Australia - Next-Day Prediction Model
 
-Student name: T.J. Kyner \
-Student pace: Full time \
-Instructor: Abhineet Kulkarni \
-Cohort: 040521
-
 ## Project Overview
 ### Data Source
 The data used in this project was downloaded from the Kaggle dataset titled [Rain in Australia](https://www.kaggle.com/jsphyg/weather-dataset-rattle-package), which itself was originally sourced from the Australian Bureau of Meteorology's [Daily Weather Observations](http://www.bom.gov.au/climate/dwo/). Additional weather metrics for Australia can be found within the bureau's [Climate Data Online](http://www.bom.gov.au/climate/data/) web app.
